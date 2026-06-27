@@ -4,7 +4,7 @@ Convert **glTF / GLB** models into **Virt-A-Mate** `CustomUnityAsset` (`.assetbu
 
 CUA Asset Studio is the desktop front-end of the [Shadow Venom](https://r18sv.github.io/) **CRAFT** tool line (*Creators Reclaiming Art From Tech*). It wraps the offline `glb → CUA` baking pipeline in a friendly WPF app so you can drop in a model, dial it in against a human reference, and ship a VAM-ready asset without ever opening Unity.
 
-> **Status:** open-source GUI. The actual mesh/texture/animation baking is performed by a separate **conversion engine** (`glb2cua`) that you point the app at in `config.json` — see [Configuration](#configuration).
+> **Status:** open-source GUI. The actual mesh/texture/animation baking is performed by the separate, also-open-source **conversion engine** [`glb2cua`](https://github.com/R18SV/glb2cua), which you point the app at in `config.json` — see [Configuration](#configuration).
 
 ---
 
@@ -31,7 +31,7 @@ CUA Asset Studio is the desktop front-end of the [Shadow Venom](https://r18sv.gi
 - **Windows 10/11**
 - **[.NET 9 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/9.0)** (only if you run the framework-dependent build; the release ZIP is self-contained)
 - **[Microsoft Edge WebView2 Runtime](https://developer.microsoft.com/microsoft-edge/webview2/)** (pre-installed on current Windows)
-- The **`glb2cua` conversion engine** (Python script or frozen `.exe`) for actually baking assets — preview, gizmo, and material editing all work without it.
+- The **[`glb2cua`](https://github.com/R18SV/glb2cua) conversion engine** (Python script or frozen `.exe`) for actually baking assets — preview, gizmo, and material editing all work without it.
 
 ---
 
@@ -70,7 +70,7 @@ On first run the app copies `config.example.json` next to the executable as a te
 | Key | Meaning |
 | --- | --- |
 | `python` | Python launcher used to run the engine script (`python`, `py`, or a full path). |
-| `glb2cuaScript` | Path to the `glb2cua` Python entry point. |
+| `glb2cuaScript` | Path to the [`glb2cua`](https://github.com/R18SV/glb2cua) Python entry point (`glb2cua_mold.py`). |
 | `engineExe` | Optional: path to a frozen engine `.exe` (used instead of Python when set). |
 | `glb2cuaMold` | The Unity "Mold" asset bundle the engine bakes into. |
 | `outDir` | Default output folder for finished `.assetbundle` packages. |
