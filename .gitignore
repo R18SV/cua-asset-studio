@@ -1,0 +1,22 @@
+# Build output
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Local machine config (paths to the conversion engine, output dirs).
+# Copy config.example.json -> config.json and fill in your own paths.
+config.json
+
+# Local settings written at runtime
+settings.json
+
+# Publish / release artifacts
+publish/
+*.zip
+
+# Release-channel marketing drafts (kept local, not part of the source)
+Discord announcement.txt
+Release page BBCode.txt
+Release page BBCode ref

@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>AssetCuaStudio</AssemblyName>
+    <RootNamespace>AssetCuaStudio</RootNamespace>
+    <ApplicationIcon>AssetCuaStudio.ico</ApplicationIcon>
+    <!-- release packaging: single self-contained exe, English-only satellites (drop the 13 locale folders) -->
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WPF-UI" Version="3.0.5" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2792.45" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="AssetCuaStudio.ico" />   <!-- window / taskbar icon (exe icon via ApplicationIcon above) -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- three.js preview page + local vendor libs + person reference, copied next to the exe -->
+    <Content Include="web\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <!-- machine-local config (git-ignored); copied only when present so a fresh clone still builds -->
+    <None Include="config.json" Condition="Exists('config.json')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="config.example.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
